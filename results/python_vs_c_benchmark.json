@@ -1,0 +1,34 @@
+{
+  "metrics": [
+    {
+      "parameter": "Process Peak RAM (RSS)",
+      "python_pytorch": "370.6 MB",
+      "native_c_edge": "175.0 MB",
+      "advantage": "195.6 MB less RAM (52.8% reduction)"
+    },
+    {
+      "parameter": "Executable / Binary Size",
+      "python_pytorch": "~4.2 GB (Python Env + PyTorch wheel)",
+      "native_c_edge": "226.0 KB (ecosight_edge)",
+      "advantage": "99.9% smaller footprint (embedded ready)"
+    },
+    {
+      "parameter": "Post-Processing (NMS) Speed",
+      "python_pytorch": "0.745 ms",
+      "native_c_edge": "0.102 ms",
+      "advantage": "7.3x faster NMS"
+    },
+    {
+      "parameter": "Steady-State Loop Latency",
+      "python_pytorch": "206.97 ms (~4.8 FPS)",
+      "native_c_edge": "55.42 ms (~18.0 FPS)",
+      "advantage": "Consistent deterministic timing for servo flap"
+    },
+    {
+      "parameter": "UART Microcontroller Bridge",
+      "python_pytorch": "Requires pyserial wrapper",
+      "native_c_edge": "Native POSIX termios /dev/ttyUSB0",
+      "advantage": "Direct hardware write (0xAA..Angle..0x55)"
+    }
+  ]
+}
