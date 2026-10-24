@@ -1,0 +1,12 @@
+# EcoSight AI - TACO Multi-Class Waste Dataset
+path: C:/Users/abhis/Documents/hackathon/ecosight/data/taco_yolo
+train: images/train
+val: images/val
+names:
+  0: Bottle
+  1: Can
+  2: Cup
+  3: Carton
+  4: Wrapper-Bag
+  5: Cigarette
+  6: Other-Waste

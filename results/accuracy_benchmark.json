@@ -1,0 +1,64 @@
+{
+  "total_images": 27,
+  "eval_time_cpu_ms_per_image": 68.7,
+  "c_nms_latency_ms": 0.102,
+  "hardware_throughput_fps": 15.3,
+  "classes": {
+    "Bottle": {
+      "gt_objects": 9,
+      "tp": 1,
+      "fp": 1,
+      "precision": 0.5,
+      "recall": 0.111,
+      "f1": 0.182
+    },
+    "Can / Metal": {
+      "gt_objects": 7,
+      "tp": 0,
+      "fp": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "note": "Requires waste fine-tuning"
+    },
+    "Cup": {
+      "gt_objects": 3,
+      "tp": 1,
+      "fp": 1,
+      "precision": 0.5,
+      "recall": 0.333,
+      "f1": 0.4
+    },
+    "Carton": {
+      "gt_objects": 7,
+      "tp": 0,
+      "fp": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "note": "Requires waste fine-tuning"
+    },
+    "Wrapper / Plastic Bag": {
+      "gt_objects": 7,
+      "tp": 0,
+      "fp": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "note": "Requires waste fine-tuning"
+    },
+    "Other-Waste": {
+      "gt_objects": 22,
+      "tp": 0,
+      "fp": 0,
+      "precision": 0.0,
+      "recall": 0.0,
+      "note": "Requires waste fine-tuning"
+    }
+  },
+  "overall_waste_stream_routing": {
+    "gt_objects": 56,
+    "routed_correctly_tp": 23,
+    "false_alarms_fp": 155,
+    "missed_fn": 33,
+    "macro_stream_precision": 0.129,
+    "macro_stream_recall": 0.411
+  }
+}
