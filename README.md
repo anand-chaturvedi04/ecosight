@@ -1,34 +1,62 @@
-# EcoSight AI
+# 🌿 EcoSight AI
 
-Computer-vision waste segregation for campus waste management: YOLOv8n detection of 11 waste classes, mapped to Organic/Compost, Recyclable and General Waste, with a Streamlit UI, nearest-bin finder (illustrative demo locations) and analytics.
+**AI-Powered Computer Vision-Based Smart Waste Segregation System for Sustainable Campus Waste Management**
 
-## Setup (Windows PowerShell)
+EcoSight AI is an autonomous computer-vision waste segregation platform. It leverages **Ultralytics YOLOv8n** to classify waste items from camera snapshots or uploads, maps them into three distinct streams (**Organic/Compost**, **Recyclable**, and **General Waste**), flags uncertain predictions ($< 60\%$ confidence), simulates IoT smart bin actuators, and calculates real-time carbon offsets and Haversine routing to campus disposal stations.
+
+---
+
+## 🚀 Key Features
+
+- **Multi-Class Detection:** Fine-tuned on the Roboflow Waste Detection v3 dataset across 11 classes, with automatic fallback to base COCO weights for live demonstration.
+- **Three-Stream Mapping:** Strict segregation rules routing items to Organic, Recyclable, and General disposal streams.
+- **Uncertainty Calibration:** Detections below $60\%$ confidence are labelled *Uncertain*, alerting users to inspect before disposal.
+- **Dual Input Modes:** Supports both static photo uploads and **Live Camera Snapshots** via `st.camera_input`.
+- **Virtual Smart Bin Actuator:** Visual flap animation and serial hardware commands (`SERVO:STREAM:OPEN:90`) ready for microcontroller/Arduino integration.
+- **Eco-Impact & Carbon Tracker:** Real-time estimation of $CO_2$ emissions averted (g $CO_2e$) and natural decomposition duration.
+- **Campus Geo-Bin Navigator:** Straight-line Haversine distance calculator routing users to the nearest compatible campus collection hubs.
+- **Telemetry & Field Journal:** Historical scan logging to CSV with interactive distribution charts and confidence analytics.
+
+---
+
+## 🛠️ Quickstart Setup (Windows PowerShell)
+
 ```powershell
-cd C:\Users\Asus\Desktop\EcoSight
+# 1. Navigate to the project directory
+cd ecosight
+
+# 2. Create and activate a virtual environment
+python -m venv .venv
 .\.venv\Scripts\Activate.ps1
-python --version
-pip install torch torchvision --index-url https://download.pytorch.org/whl/cu128
-python -c "import torch; print(torch.__version__, torch.cuda.is_available())"
+
+# 3. Install PyTorch (CUDA or CPU)
+pip install torch torchvision --index-url https://download.pytorch.org/whl/cu121  # or cpu
+
+# 4. Install dependencies
 pip install -r requirements.txt
-```
-If no PyTorch wheel exists for your Python version (3.14), create a Python 3.12 venv instead: `py -3.12 -m venv .venv312`, activate it and repeat the steps above.
 
-## Train and evaluate
-```powershell
-python train.py --mode pilot --data "<dataset folder>"   # pipeline check only
-python train.py --mode full --hours 1.5                   # real training, saves models\best.pt
-python evaluate.py                                        # writes results\metrics.json
-```
-Omit `--data` if the dataset is already under `data\`.
-
-## Run the app
-```powershell
+# 5. Launch the Streamlit application
 streamlit run app.py
 ```
 
-## Outputs
-`models\best.pt`, `results\train_full\` (results.csv, plots, args.yaml), `results\train_summary.json`, `results\metrics.json`, `results\metrics_summary.md`, `results\history.csv`.
+---
 
-## Attribution
-Dataset: Waste Detection v3 (Roboflow Universe), CC BY 4.0 - https://universe.roboflow.com/test-mq1p0/waste-detection-v3-tunsu/dataset/7
-Bin coordinates are illustrative demo data, not verified campus infrastructure.
+## 🧪 Training & Evaluation
+
+```powershell
+# Sanity check pilot run (3 epochs)
+python train.py --mode pilot --data "<path_to_dataset_yaml>"
+
+# Full training run with time budget
+python train.py --mode full --hours 1.5
+
+# Validation benchmark evaluation (generates results\metrics.json)
+python evaluate.py
+```
+
+---
+
+## 📊 Dataset & Attribution
+
+- **Dataset:** [Waste Detection v3 (Roboflow Universe)](https://universe.roboflow.com/test-mq1p0/waste-detection-v3-tunsu/dataset/7), licensed under **CC BY 4.0**.
+- **Bin Coordinates:** Illustrative demo locations around campus infrastructure for navigation demonstration.

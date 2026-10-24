@@ -1,0 +1,26 @@
+# Python bytecode & cache
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.pytest_cache/
+
+# Virtual Environments
+.venv/
+venv/
+env/
+.env
+
+# Ultralytics & Model Checkpoints / Runs
+runs/
+*.pt
+!yolov8n.pt
+
+# Results & Local History
+results/history.csv
+.streamlit/
+
+# OS Artifacts
+.DS_Store
+Thumbs.db
+desktop.ini
